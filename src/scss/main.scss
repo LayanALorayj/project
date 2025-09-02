@@ -1,0 +1,223 @@
+// =============================================================================
+// KSU Learning Project - Main SCSS File
+// =============================================================================
+// 
+// This file demonstrates SCSS features that trainees will learn and enhance.
+// Complete each SCSS task by implementing the required functionality.
+//
+// Learning Path:
+// - Variables and data types
+// - Nesting and selectors
+// - Mixins and functions
+// - Partials and imports
+// - Control directives
+// =============================================================================
+
+// =============================================================================
+// SCSS Variables (Task: Learn SCSS Variables & Data Types)
+// =============================================================================
+
+// TODO: Add more color variables for the KSU brand
+$primary-color: #3498db;
+$secondary-color: #2c3e50;
+$accent-color: #e74c3c;
+$success-color: #27ae60;
+$warning-color: #f39c12;
+$error-color: #e74c3c;
+
+// TODO: Add typography variables
+$font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-family-secondary: 'Times New Roman', Times, serif;
+$font-size-base: 16px;
+$font-size-small: 14px;
+$font-size-large: 18px;
+$font-size-h1: 2.5rem;
+$font-size-h2: 2rem;
+$font-size-h3: 1.5rem;
+
+// TODO: Add spacing variables
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-xxl: 3rem;
+
+// TODO: Add breakpoint variables
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+
+// TODO: Add border radius variables
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-pill: 50px;
+
+// =============================================================================
+// SCSS Mixins (Task: Learn SCSS Mixins & Functions)
+// =============================================================================
+
+// TODO: Create a mixin for flexbox centering
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// TODO: Create a mixin for responsive breakpoints
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == sm {
+        @media (max-width: $breakpoint-sm) { @content; }
+    } @else if $breakpoint == md {
+        @media (max-width: $breakpoint-md) { @content; }
+    } @else if $breakpoint == lg {
+        @media (max-width: $breakpoint-lg) { @content; }
+    } @else if $breakpoint == xl {
+        @media (max-width: $breakpoint-xl) { @content; }
+    }
+}
+
+// TODO: Create a mixin for button styles
+@mixin button-style($bg-color, $text-color, $hover-bg) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: $spacing-sm $spacing-lg;
+    border: none;
+    border-radius: $border-radius-pill;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background-color: $hover-bg;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba($bg-color, 0.4);
+    }
+}
+
+// TODO: Create a mixin for card styles
+@mixin card-style {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: $border-radius-lg;
+    padding: $spacing-xl;
+    margin-bottom: $spacing-lg;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// =============================================================================
+// SCSS Functions (Task: Learn SCSS Functions)
+// =============================================================================
+
+// TODO: Create a function to calculate responsive font sizes
+@function responsive-font($min-size, $max-size, $min-width, $max-width) {
+    $slope: ($max-size - $min-size) / ($max-width - $min-width);
+    $slope-vw: $slope * 100;
+    $intercept-rem: $min-size - $slope * $min-width;
+    
+    @return calc(#{$intercept-rem} + #{$slope-vw}vw);
+}
+
+// TODO: Create a function to generate color variations
+@function lighten-color($color, $percentage) {
+    @return lighten($color, $percentage);
+}
+
+@function darken-color($color, $percentage) {
+    @return darken($color, $percentage);
+}
+
+// =============================================================================
+// Base Styles (Task: Learn SCSS Nesting & Selectors)
+// =============================================================================
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family-primary;
+    line-height: 1.6;
+    color: $secondary-color;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+// TODO: Enhance typography with SCSS nesting
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+    color: $secondary-color;
+    
+    // TODO: Add responsive font sizes using the function
+    // TODO: Add text shadows and other effects
+}
+
+h1 {
+    font-size: $font-size-h1;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: $font-size-h2;
+    margin-top: $spacing-xl;
+}
+
+h3 {
+    font-size: $font-size-h3;
+    margin-top: $spacing-lg;
+}
+
+p {
+    margin-bottom: $spacing-md;
+    font-size: 1.1rem;
+}
+
+// =============================================================================
+// Layout Components (Task: Learn SCSS Organization)
+// =============================================================================
+
+.header {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    padding: $spacing-md 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    
+    // TODO: Add responsive header styles
+    // TODO: Add mobile navigation styles
+}
+
+.header-container {
+    max-width: $breakpoint-xl;
+    margin: 0 auto;
+    padding: 0 $spacing-xl;
+    @include flex-center;
+    justify-content: space-between;
+    gap: $spacing-xl;
+}
+
+// TODO: Add more component styles using mixins
+// TODO: Implement responsive design using the respond-to mixin
+// TODO: Add animations and transitions
+// TODO: Create utility classes
+
+// =============================================================================
+// TODO: Import partials for better organization
+// =============================================================================
+// @import 'variables';
+// @import 'mixins';
+// @import 'functions';
+// @import 'base';
+// @import 'components';
+// @import 'layout';
+// @import 'utilities';
+// @import 'responsive';
