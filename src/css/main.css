@@ -281,7 +281,7 @@ p {
 }
 
 /* Sections */
-.welcome-section, .schedule-section, .lists-section, .forms-section, .profile-section, .contact-form-section, .contact-info-section {
+.welcome-section, .schedule-section, .lists-section, .forms-section, .profile-section, .contact-form-section, .contact-info-section,.gallery-item {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -290,6 +290,21 @@ p {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
+/* graduate photo */
+ 
+.gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+		grid-gap: 2rem;
+        margin-bottom: 2rem;
+	}
+    
+	.gallery,
+	.gallery-item {
+		margin: 0;
+        margin-bottom: 1rem;
+
+	}
 
 /* Table Styles */
 .schedule-table {
@@ -361,19 +376,28 @@ p {
 }
 
 /* Forms */
+
+.form-continer {
+display: flex;
+flex-wrap: wrap; 
+gap: 20px;
+justify-content: space-around;
+
+}
 .form-group {
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem ; 
     font-weight: 600;
     color: #2c3e50;
 }
 
 .form-group input, .form-group select {
-    width: 100%;
+    width: 160;
     padding: 0.75rem;
     border: 2px solid #e1e8ed;
     border-radius: 8px;
@@ -385,6 +409,7 @@ p {
     outline: none;
     border-color: #3498db;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    display: flex;
 }
 
 .form-actions {
