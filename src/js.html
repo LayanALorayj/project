@@ -2,52 +2,110 @@
 <html>
   <head>
     <title>DOM example</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      .buttons {
+        margin-top: 15px;
+      }
+      .buttons input {
+        margin: 5px;
+        padding: 10px 15px;
+        font-size: 16px;
+      }
+      body {
+        background-color: rgb(247, 227, 203);
+      }
+      .result {
+        font-weight: 400;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+      }
+
+    </style>
+
   
   </head>
 
   <body style="text-align: center">
-    <h1 id="geeks">GeeksforGeeks</h1>
+    <h1 id="geeks">Calculator</h1>
     
 
     <h2>Counter </h2>
-    <h4 id="counter"></h4>
+    <h4 id="counter" class="result"></h4>
 
     <!-- Click on the button to change color -->
 
-    <input type="button" onclick="increment()" value="+1 " />
-
-    <input type="button" onclick="decrement()" value="-1 " />
-    <input type="button" onclick="multi()" value="X" />
-
     <input type="number" id="num1" value=" " />
     <input type="number" id="num2"  value=" " />
+
+    <div class="buttons">
+    <input type="button" onclick="increment()" value="+" />
+    <input type="button" onclick="decrement()" value="-" />
+    <input type="button" onclick="multi()" value="X" />
+    <input type="button" onclick="division()" value="%" />
+    </div>  
+
+  
     
   </body>
-    <script type="text/javascript">
+   <script type="text/javascript">
 
-        let counter = 0;
-        const demo = document.getElementById("geeks");
+let counter = 0;
+const demo = document.getElementById("geeks");
+const counterElem = document.getElementById("counter");
 
-        function increment() {
-          counter += 1;
-          document.getElementById("counter").innerText = counter;
-          demo.style.color = counter % 2 == 0 ? "green" : "red";
-        }
-        function decrement() {
-          counter -= 1;
-          document.getElementById("counter").innerText = counter;
-          demo.style.color = counter % 2 == 0 ? "green" : "red";
-        }
+function increment() {
+  let num1 = parseInt(document.getElementById("num1").value) || 0;
+  let num2 = parseInt(document.getElementById("num2").value) || 0;
+  let result = num1 + num2;
 
-        function multi() {
-        let num1 = parseInt(document.getElementById("num1").value) || 0;
-        let num2 = parseInt(document.getElementById("num2").value)  || 0;
-            console.log(num1,num2);
+  counterElem.innerText = result;
+  counterElem.style.color = result < 0 ? "red" : "green";
+  demo.style.color = "green"; 
+}
 
-          let result = num1 * num2;
-          document.getElementById("counter").innerText = result;
-          demo.style.color = result % 2 == 0 ? "green" : "red";
-        }
-        
+function decrement() {
+  let num1 = parseInt(document.getElementById("num1").value) || 0;
+  let num2 = parseInt(document.getElementById("num2").value) || 0;
+  let result = num1 - num2;
+
+  counterElem.innerText = result;
+  counterElem.style.color = result < 0 ? "red" : "green";
+  demo.style.color = "orange";
+}
+
+function multi() {
+  let num1 = parseInt(document.getElementById("num1").value) || 0;
+  let num2 = parseInt(document.getElementById("num2").value) || 0;
+  let result = num1 * num2;
+
+  counterElem.innerText = result;
+  counterElem.style.color = result < 0 ? "red" : "green";
+  demo.style.color = "red";
+}
+
+function division() {
+  let num1 = parseInt(document.getElementById("num1").value) || 0;
+  let num2 = parseInt(document.getElementById("num2").value) || 1; 
+  let result = num1 / num2;
+
+  counterElem.innerText = result;
+  counterElem.style.color = result < 0 ? "red" : "green";
+  demo.style.color = "blue";
+}
+
+let buttons = document.querySelectorAll(".buttons input");
+buttons.forEach(btn => {
+  btn.style.backgroundColor = "white";
+  btn.style.border = "none";
+  btn.style.borderRadius = "6px";
+  btn.style.padding = "10px 15px";
+  btn.style.margin = "5px";
+  btn.style.fontSize = "16px";
+});
+</script>
+
     </script>
 </html>
