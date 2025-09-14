@@ -11,6 +11,8 @@
 
     <h2>Counter </h2>
     <h4 id="counter"></h4>
+    Time Counter:
+    <h5 id="timeCounter"></h5>
 
     <!-- Click on the button to change color -->
 
@@ -26,6 +28,7 @@
     <script type="text/javascript">
 
         let counter = 0;
+        let timerCounter = 0;
         const demo = document.getElementById("geeks");
 
         function increment() {
@@ -48,6 +51,13 @@
           document.getElementById("counter").innerText = result;
           demo.style.color = result % 2 == 0 ? "green" : "red";
         }
+
+        setInterval(() => {
+          timerCounter += 1;
+            document.getElementById("timeCounter").innerText = timerCounter;
+
+          console.log("Timer: ", timerCounter);
+        }, 10000);
         
     </script>
 </html>
