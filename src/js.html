@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM example</title>
+  
+  </head>
+
+  <body style="text-align: center">
+    <h1 id="geeks">GeeksforGeeks</h1>
+    
+
+    <h2>Counter </h2>
+    <h4 id="counter"></h4>
+
+    <!-- Click on the button to change color -->
+
+    <input type="button" onclick="increment()" value="+1 " />
+
+    <input type="button" onclick="decrement()" value="-1 " />
+    <input type="button" onclick="multi()" value="X" />
+
+    <input type="number" id="num1" value=" " />
+    <input type="number" id="num2"  value=" " />
+    
+  </body>
+    <script type="text/javascript">
+
+        let counter = 0;
+        const demo = document.getElementById("geeks");
+
+        function increment() {
+          counter += 1;
+          document.getElementById("counter").innerText = counter;
+          demo.style.color = counter % 2 == 0 ? "green" : "red";
+        }
+        function decrement() {
+          counter -= 1;
+          document.getElementById("counter").innerText = counter;
+          demo.style.color = counter % 2 == 0 ? "green" : "red";
+        }
+
+        function multi() {
+        let num1 = parseInt(document.getElementById("num1").value) || 0;
+        let num2 = parseInt(document.getElementById("num2").value)  || 0;
+            console.log(num1,num2);
+
+          let result = num1 * num2;
+          document.getElementById("counter").innerText = result;
+          demo.style.color = result % 2 == 0 ? "green" : "red";
+        }
+        
+    </script>
+</html>
