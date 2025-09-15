@@ -1,58 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>DOM example</title>
-    <style>
-      body {
-        text-align: center;
-      }
-      .buttons {
-        margin-top: 15px;
-      }
-      .buttons input {
-        margin: 5px;
-        padding: 10px 15px;
-        font-size: 16px;
-      }
-      body {
-        background-color: rgb(247, 227, 203);
-      }
-      .result {
-        font-weight: 400;
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 20px;
-      }
-
-    </style>
-
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KSU Calculator - Learning Project</title>
+    <meta name="description" content="Interactive calculator for learning JavaScript DOM manipulation">
+    <link rel="stylesheet" href="css/main.css">
   </head>
 
-  <body style="text-align: center">
-    <h1 id="geeks">Calculator</h1>
-    
+  <body>
+    <header class="header">
+      <div class="header-container">
+        <div class="header-brand">
+          <h1 class="main-title">KSU Calculator</h1>
+          <p class="subtitle">JavaScript Learning Project</p>
+        </div>
+        
+        <nav class="main-navigation">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">
+                <span class="nav-icon">🏠</span>
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="about.html" class="nav-link">
+                <span class="nav-icon">ℹ️</span>
+                About
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-    <h2>Counter </h2>
-    <h4 id="counter"></h4>
-    Time Counter:
-    <h5 id="timeCounter"></h5>
+    <main class="main-content">
+      <section class="calculator-section">
+        <h2 id="geeks">Interactive Calculator</h2>
+        
+        <div class="calculator-display">
+          <h3>Result</h3>
+          <div id="counter" class="result-display">0</div>
+        </div>
 
-    <!-- Click on the button to change color -->
+        <div class="timer-display">
+          <h4>Timer Counter:</h4>
+          <div id="timeCounter" class="timer-value">0</div>
+        </div>
 
-    <input type="number" id="num1" value=" " />
-    <input type="number" id="num2"  value=" " />
+        <div class="calculator-inputs">
+          <input type="number" id="num1" placeholder="First number" />
+          <input type="number" id="num2" placeholder="Second number" />
+        </div>
 
-    <div class="buttons">
-    <input type="button" onclick="increment()" value="+" />
-    <input type="button" onclick="decrement()" value="-" />
-    <input type="button" onclick="multi()" value="X" />
-    <input type="button" onclick="division()" value="%" />
-    </div>  
-
-  
-    
+        <div class="calculator-buttons">
+          <button id="incrementBtn" class="btn btn-primary">+</button>
+          <button id="decrementBtn" class="btn btn-secondary">-</button>
+          <button id="multiplyBtn" class="btn btn-success">×</button>
+          <button id="divideBtn" class="btn btn-warning">÷</button>
+        </div>
+      </section>
+    </main>
   </body>
-   <script type="text/javascript" src="js/calculator.js">
+  <script type="module" src="js/calculator.js"></script>
 
-    </script>
 </html>

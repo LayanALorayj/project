@@ -13,6 +13,8 @@
 // - Control directives
 // =============================================================================
 
+@use "sass:color";
+
 // =============================================================================
 // SCSS Variables (Task: Learn SCSS Variables & Data Types)
 // =============================================================================
@@ -123,11 +125,11 @@ $border-radius-pill: 50px;
 
 // TODO: Create a function to generate color variations
 @function lighten-color($color, $percentage) {
-    @return lighten($color, $percentage);
+    @return color.adjust($color, $lightness: $percentage);
 }
 
 @function darken-color($color, $percentage) {
-    @return darken($color, $percentage);
+    @return color.adjust($color, $lightness: -$percentage);
 }
 
 // =============================================================================
@@ -203,6 +205,114 @@ p {
     @include flex-center;
     justify-content: space-between;
     gap: $spacing-xl;
+}
+
+// Calculator specific styles
+.calculator-section {
+  @include card-style;
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.calculator-display {
+  margin: $spacing-lg 0;
+  
+  h3 {
+    color: $secondary-color;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.result-display {
+  font-size: 3rem;
+  font-weight: bold;
+  padding: $spacing-lg;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: $border-radius-lg;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.timer-display {
+  margin: $spacing-lg 0;
+  
+  h4 {
+    color: $secondary-color;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.timer-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.calculator-inputs {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  margin: $spacing-lg 0;
+  
+  input {
+    width: 120px;
+    padding: $spacing-md;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: $border-radius-md;
+    background: rgba(255, 255, 255, 0.1);
+    color: $secondary-color;
+    font-size: 1.2rem;
+    text-align: center;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    &::placeholder {
+      color: rgba(44, 62, 80, 0.6);
+    }
+  }
+}
+
+.calculator-buttons {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  margin: $spacing-lg 0;
+  
+  .btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: $border-radius-lg;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Additional button styles
+.btn-success {
+  @include button-style($success-color, white, color.adjust($success-color, $lightness: -10%));
+}
+
+.btn-warning {
+  @include button-style($warning-color, white, color.adjust($warning-color, $lightness: -10%));
 }
 
 // TODO: Add more component styles using mixins
