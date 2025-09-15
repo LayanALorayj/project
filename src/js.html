@@ -33,7 +33,9 @@
     
 
     <h2>Counter </h2>
-    <h4 id="counter" class="result"></h4>
+    <h4 id="counter"></h4>
+    Time Counter:
+    <h5 id="timeCounter"></h5>
 
     <!-- Click on the button to change color -->
 
@@ -52,9 +54,8 @@
   </body>
    <script type="text/javascript">
 
-let counter = 0;
-const demo = document.getElementById("geeks");
-const counterElem = document.getElementById("counter");
+        let counter = 0;
+        const demo = document.getElementById("geeks");
 
 function increment() {
   let num1 = parseInt(document.getElementById("num1").value) || 0;
@@ -76,36 +77,15 @@ function decrement() {
   demo.style.color = "orange";
 }
 
-function multi() {
-  let num1 = parseInt(document.getElementById("num1").value) || 0;
-  let num2 = parseInt(document.getElementById("num2").value) || 0;
-  let result = num1 * num2;
+        function multi() {
+        let num1 = parseInt(document.getElementById("num1").value) || 0;
+        let num2 = parseInt(document.getElementById("num2").value)  || 0;
+            console.log(num1,num2);
 
-  counterElem.innerText = result;
-  counterElem.style.color = result < 0 ? "red" : "green";
-  demo.style.color = "red";
-}
-
-function division() {
-  let num1 = parseInt(document.getElementById("num1").value) || 0;
-  let num2 = parseInt(document.getElementById("num2").value) || 1; 
-  let result = num1 / num2;
-
-  counterElem.innerText = result;
-  counterElem.style.color = result < 0 ? "red" : "green";
-  demo.style.color = "blue";
-}
-
-let buttons = document.querySelectorAll(".buttons input");
-buttons.forEach(btn => {
-  btn.style.backgroundColor = "white";
-  btn.style.border = "none";
-  btn.style.borderRadius = "6px";
-  btn.style.padding = "10px 15px";
-  btn.style.margin = "5px";
-  btn.style.fontSize = "16px";
-});
-</script>
-
+          let result = num1 * num2;
+          document.getElementById("counter").innerText = result;
+          demo.style.color = result % 2 == 0 ? "green" : "red";
+        }
+        
     </script>
 </html>
