@@ -55,6 +55,7 @@
    <script type="text/javascript">
 
         let counter = 0;
+        let timerCounter = 0;
         const demo = document.getElementById("geeks");
 
 function increment() {
@@ -86,6 +87,13 @@ function decrement() {
           document.getElementById("counter").innerText = result;
           demo.style.color = result % 2 == 0 ? "green" : "red";
         }
+
+        setInterval(() => {
+          timerCounter += 1;
+            document.getElementById("timeCounter").innerText = timerCounter;
+
+          console.log("Timer: ", timerCounter);
+        }, 10000);
         
     </script>
 </html>
