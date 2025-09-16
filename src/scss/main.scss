@@ -207,12 +207,138 @@ p {
     gap: $spacing-xl;
 }
 
+.main-navigation {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #34495e;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: rgba(52, 152, 219, 0.1);
+    white-space: nowrap;
+    
+    &:hover {
+        background: $primary-color;
+        color: white;
+        border-color: $primary-color;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+    
+    &.active {
+        background: $primary-color;
+        color: white;
+        border-color: $primary-color;
+    }
+}
+
+.nav-icon {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
 // Calculator specific styles
 .calculator-section {
   @include card-style;
   text-align: center;
   max-width: 600px;
   margin: 2rem auto;
+}
+
+// JS Demo specific styles
+.js-demo-section {
+  @include card-style;
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.demo-display {
+  margin: $spacing-lg 0;
+  
+  h3 {
+    color: $secondary-color;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.demo-inputs {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  margin: $spacing-lg 0;
+  
+  input {
+    width: 120px;
+    padding: $spacing-md;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: $border-radius-md;
+    background: rgba(255, 255, 255, 0.1);
+    color: $secondary-color;
+    font-size: 1.2rem;
+    text-align: center;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    &::placeholder {
+      color: rgba(44, 62, 80, 0.6);
+    }
+  }
+}
+
+.demo-buttons {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  margin: $spacing-lg 0;
+  
+  .btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: $border-radius-lg;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
 }
 
 .calculator-display {
@@ -313,6 +439,215 @@ p {
 
 .btn-warning {
   @include button-style($warning-color, white, color.adjust($warning-color, $lightness: -10%));
+}
+
+// Gallery styles
+.gallery-section {
+  @include card-style;
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+}
+
+.gallery-item {
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.gallery-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+// Form styles
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: $spacing-lg;
+  
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    font-weight: 600;
+    color: $secondary-color;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: $spacing-md;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: $border-radius-md;
+    background: rgba(255, 255, 255, 0.1);
+    color: $secondary-color;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    &::placeholder {
+      color: rgba(44, 62, 80, 0.6);
+    }
+  }
+}
+
+// Main content styles
+.main-content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+// Section styles
+.welcome-section, .schedule-section, .lists-section, .forms-section, .gallery-section {
+  @include card-style;
+}
+
+// Table styles
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-table caption {
+  background: $primary-color;
+  color: white;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.schedule-table th {
+  background: #ecf0f1;
+  color: $secondary-color;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid #bdc3c7;
+}
+
+.schedule-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #ecf0f1;
+  transition: background-color 0.3s ease;
+}
+
+.schedule-table tr:hover td {
+  background-color: #f8f9fa;
+}
+
+// Lists styles
+.ordered-list, .unordered-list, .description-list {
+  margin: 1.5rem 0;
+}
+
+.ordered-list ol, .unordered-list ul {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.ordered-list li, .unordered-list li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.description-list dl {
+  margin: 1rem 0;
+}
+
+.description-list dt {
+  font-weight: 600;
+  color: $secondary-color;
+  margin-bottom: 0.5rem;
+}
+
+.description-list dd {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+// Sidebar styles
+.sidebar {
+  @include card-style;
+}
+
+.collapsible summary {
+  cursor: pointer;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  font-weight: 600;
+  color: $secondary-color;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background: #e9ecef;
+  }
+}
+
+.collapsible p {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid $primary-color;
+}
+
+// Footer styles
+.footer {
+  background: rgba(44, 62, 80, 0.95);
+  color: white;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+.footer-links {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer a {
+  color: #bdc3c7;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
 }
 
 // TODO: Add more component styles using mixins
