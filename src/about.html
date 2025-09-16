@@ -6,31 +6,47 @@
     <title>About Layan - KSU Student</title>
     <meta name="description" content="Learn more about Layan, a Management Information Systems student at King Saud University">
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <div class="header-brand">
-                <img src="./assets/img/ksu-logo.png" alt="King Saud University Logo" class="logo">
-                <div class="brand-text">
-                    <h1 class="main-title">About Layan</h1>
-                    <p class="subtitle">MIS Student at KSU</p>
-                </div>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/img/ksu-logo.png" alt="KSU Logo" width="40" height="40" class="me-2">
+                <span class="fw-bold">About Layan</span>
+            </a>
             
-            <nav class="main-navigation">
-                <ul class="nav-list">
-                    <!-- Navigation will be populated by navigation.js -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="calculator.html">
+                            <i class="fas fa-calculator me-1"></i>Calculator
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="js.html">
+                            <i class="fas fa-code me-1"></i>JS Demo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">
+                            <i class="fas fa-info-circle me-1"></i>About
+                        </a>
+                    </li>
                 </ul>
-            </nav>
-            
-            <div class="header-actions">
-                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                    <span class="hamburger"></span>
-                </button>
             </div>
         </div>
-    </header>
+    </nav>
 
     <main class="main-content">
         <section class="profile-section">
@@ -100,5 +116,6 @@
     <script src="js/main.js"></script>
     <script src="js/validation.js"></script>
     <script src="js/api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
