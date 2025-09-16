@@ -360,9 +360,9 @@ p {
 .form-group input, .form-group select {
   width: 100%;
   padding: 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(44, 44, 44, 0.3);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(112, 104, 104, 0.1);
   color: #2c3e50;
   font-size: 1rem;
   transition: border-color 0.3s ease, background 0.3s ease;
