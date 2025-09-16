@@ -37,6 +37,9 @@ p {
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
+.form1 {
+  margin-bottom: 0.5rem;
+}
 
 .header {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);

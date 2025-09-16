@@ -6,6 +6,7 @@
     <title>King Saud University - Welcome</title>
     <meta name="description" content="Welcome to King Saud University official website">
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
     <header class="header">
@@ -125,14 +126,33 @@
         </aside>
 
         <section id="forms" class="forms-section">
-            <h2>Interactive Forms</h2>
-            <div class="form-container">
+            <h2 class="form1">Forms</h2>
+            <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Ur Email" aria-label="Recipient’s username" aria-describedby="basic-addon2">
+  <span class="input-group-text" id="basic-addon2">@example.com</span>
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Password" aria-label="Username">
+  <span class="input-group-text">Again</span>
+  <input type="text" class="form-control" placeholder="Validat Password" aria-label="Server">
+</div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </div>
+
+            <!-- <div class="form-container">
                 <div class="form-group">
                     <label for="question">Ask a Question</label>
                     <input type="text" id="question" name="question" placeholder="Type your question here">
-                </div>
+                </div> -->
                 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="number-select">Select Number</label>
                     <select id="number-select" name="number">
                         <optgroup label="Low Numbers">
@@ -144,9 +164,9 @@
                             <option value="4">4</option>
                         </optgroup>
                     </select>
-                </div>
+                </div> -->
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="letter-input">Choose Letter</label>
                     <input type="text" id="letter-input" name="letter" list="letter-options">
                     <datalist id="letter-options">
@@ -158,7 +178,7 @@
                         <option value="F">
                     </datalist>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
 
@@ -174,5 +194,6 @@
     <script src="js/main.js"></script>
     <script src="js/validation.js"></script>
     <script src="js/api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
