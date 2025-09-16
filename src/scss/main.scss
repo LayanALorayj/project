@@ -1,0 +1,668 @@
+// =============================================================================
+// KSU Learning Project - Main SCSS File
+// =============================================================================
+// 
+// This file demonstrates SCSS features that trainees will learn and enhance.
+// Complete each SCSS task by implementing the required functionality.
+//
+// Learning Path:
+// - Variables and data types
+// - Nesting and selectors
+// - Mixins and functions
+// - Partials and imports
+// - Control directives
+// =============================================================================
+
+@use "sass:color";
+
+// =============================================================================
+// SCSS Variables (Task: Learn SCSS Variables & Data Types)
+// =============================================================================
+
+// TODO: Add more color variables for the KSU brand
+$primary-color: #3498db;
+$secondary-color: #2c3e50;
+$accent-color: #e74c3c;
+$success-color: #27ae60;
+$warning-color: #f39c12;
+$error-color: #e74c3c;
+
+// TODO: Add typography variables
+$font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-family-secondary: 'Times New Roman', Times, serif;
+$font-size-base: 16px;
+$font-size-small: 14px;
+$font-size-large: 18px;
+$font-size-h1: 2.5rem;
+$font-size-h2: 2rem;
+$font-size-h3: 1.5rem;
+
+// TODO: Add spacing variables
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-xxl: 3rem;
+
+// TODO: Add breakpoint variables
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+
+// TODO: Add border radius variables
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-pill: 50px;
+
+// =============================================================================
+// SCSS Mixins (Task: Learn SCSS Mixins & Functions)
+// =============================================================================
+
+// TODO: Create a mixin for flexbox centering
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// TODO: Create a mixin for responsive breakpoints
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == sm {
+        @media (max-width: $breakpoint-sm) { @content; }
+    } @else if $breakpoint == md {
+        @media (max-width: $breakpoint-md) { @content; }
+    } @else if $breakpoint == lg {
+        @media (max-width: $breakpoint-lg) { @content; }
+    } @else if $breakpoint == xl {
+        @media (max-width: $breakpoint-xl) { @content; }
+    }
+}
+
+// TODO: Create a mixin for button styles
+@mixin button-style($bg-color, $text-color, $hover-bg) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: $spacing-sm $spacing-lg;
+    border: none;
+    border-radius: $border-radius-pill;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background-color: $hover-bg;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba($bg-color, 0.4);
+    }
+}
+
+// TODO: Create a mixin for card styles
+@mixin card-style {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: $border-radius-lg;
+    padding: $spacing-xl;
+    margin-bottom: $spacing-lg;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// =============================================================================
+// SCSS Functions (Task: Learn SCSS Functions)
+// =============================================================================
+
+// TODO: Create a function to calculate responsive font sizes
+@function responsive-font($min-size, $max-size, $min-width, $max-width) {
+    $slope: ($max-size - $min-size) / ($max-width - $min-width);
+    $slope-vw: $slope * 100;
+    $intercept-rem: $min-size - $slope * $min-width;
+    
+    @return calc(#{$intercept-rem} + #{$slope-vw}vw);
+}
+
+// TODO: Create a function to generate color variations
+@function lighten-color($color, $percentage) {
+    @return color.adjust($color, $lightness: $percentage);
+}
+
+@function darken-color($color, $percentage) {
+    @return color.adjust($color, $lightness: -$percentage);
+}
+
+// =============================================================================
+// Base Styles (Task: Learn SCSS Nesting & Selectors)
+// =============================================================================
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family-primary;
+    line-height: 1.6;
+    color: $secondary-color;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+// TODO: Enhance typography with SCSS nesting
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+    color: $secondary-color;
+    
+    // TODO: Add responsive font sizes using the function
+    // TODO: Add text shadows and other effects
+}
+
+h1 {
+    font-size: $font-size-h1;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: $font-size-h2;
+    margin-top: $spacing-xl;
+}
+
+h3 {
+    font-size: $font-size-h3;
+    margin-top: $spacing-lg;
+}
+
+p {
+    margin-bottom: $spacing-md;
+    font-size: 1.1rem;
+}
+
+// =============================================================================
+// Layout Components (Task: Learn SCSS Organization)
+// =============================================================================
+
+.header {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    padding: $spacing-md 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    
+    // TODO: Add responsive header styles
+    // TODO: Add mobile navigation styles
+}
+
+.header-container {
+    max-width: $breakpoint-xl;
+    margin: 0 auto;
+    padding: 0 $spacing-xl;
+    @include flex-center;
+    justify-content: space-between;
+    gap: $spacing-xl;
+}
+
+.main-navigation {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #34495e;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: rgba(52, 152, 219, 0.1);
+    white-space: nowrap;
+    
+    &:hover {
+        background: $primary-color;
+        color: white;
+        border-color: $primary-color;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+    
+    &.active {
+        background: $primary-color;
+        color: white;
+        border-color: $primary-color;
+    }
+}
+
+.nav-icon {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+// Calculator specific styles
+.calculator-section {
+  @include card-style;
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+// JS Demo specific styles
+.js-demo-section {
+  @include card-style;
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.demo-display {
+  margin: $spacing-lg 0;
+  
+  h3 {
+    color: $secondary-color;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.demo-inputs {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  margin: $spacing-lg 0;
+  
+  input {
+    width: 120px;
+    padding: $spacing-md;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: $border-radius-md;
+    background: rgba(255, 255, 255, 0.1);
+    color: $secondary-color;
+    font-size: 1.2rem;
+    text-align: center;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    &::placeholder {
+      color: rgba(44, 62, 80, 0.6);
+    }
+  }
+}
+
+.demo-buttons {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  margin: $spacing-lg 0;
+  
+  .btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: $border-radius-lg;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.calculator-display {
+  margin: $spacing-lg 0;
+  
+  h3 {
+    color: $secondary-color;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.result-display {
+  font-size: 3rem;
+  font-weight: bold;
+  padding: $spacing-lg;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: $border-radius-lg;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.timer-display {
+  margin: $spacing-lg 0;
+  
+  h4 {
+    color: $secondary-color;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.timer-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.calculator-inputs {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  margin: $spacing-lg 0;
+  
+  input {
+    width: 120px;
+    padding: $spacing-md;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: $border-radius-md;
+    background: rgba(255, 255, 255, 0.1);
+    color: $secondary-color;
+    font-size: 1.2rem;
+    text-align: center;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    &::placeholder {
+      color: rgba(44, 62, 80, 0.6);
+    }
+  }
+}
+
+.calculator-buttons {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  margin: $spacing-lg 0;
+  
+  .btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: $border-radius-lg;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Additional button styles
+.btn-success {
+  @include button-style($success-color, white, color.adjust($success-color, $lightness: -10%));
+}
+
+.btn-warning {
+  @include button-style($warning-color, white, color.adjust($warning-color, $lightness: -10%));
+}
+
+// Gallery styles
+.gallery-section {
+  @include card-style;
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+}
+
+.gallery-item {
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.gallery-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+// Form styles
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: $spacing-lg;
+  
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    font-weight: 600;
+    color: $secondary-color;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: $spacing-md;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: $border-radius-md;
+    background: rgba(255, 255, 255, 0.1);
+    color: $secondary-color;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    &::placeholder {
+      color: rgba(44, 62, 80, 0.6);
+    }
+  }
+}
+
+// Main content styles
+.main-content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+// Section styles
+.welcome-section, .schedule-section, .lists-section, .forms-section, .gallery-section {
+  @include card-style;
+}
+
+// Table styles
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-table caption {
+  background: $primary-color;
+  color: white;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.schedule-table th {
+  background: #ecf0f1;
+  color: $secondary-color;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid #bdc3c7;
+}
+
+.schedule-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #ecf0f1;
+  transition: background-color 0.3s ease;
+}
+
+.schedule-table tr:hover td {
+  background-color: #f8f9fa;
+}
+
+// Lists styles
+.ordered-list, .unordered-list, .description-list {
+  margin: 1.5rem 0;
+}
+
+.ordered-list ol, .unordered-list ul {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.ordered-list li, .unordered-list li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.description-list dl {
+  margin: 1rem 0;
+}
+
+.description-list dt {
+  font-weight: 600;
+  color: $secondary-color;
+  margin-bottom: 0.5rem;
+}
+
+.description-list dd {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+// Sidebar styles
+.sidebar {
+  @include card-style;
+}
+
+.collapsible summary {
+  cursor: pointer;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  font-weight: 600;
+  color: $secondary-color;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background: #e9ecef;
+  }
+}
+
+.collapsible p {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid $primary-color;
+}
+
+// Footer styles
+.footer {
+  background: rgba(44, 62, 80, 0.95);
+  color: white;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+.footer-links {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer a {
+  color: #bdc3c7;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+// TODO: Add more component styles using mixins
+// TODO: Implement responsive design using the respond-to mixin
+// TODO: Add animations and transitions
+// TODO: Create utility classes
+
+// =============================================================================
+// TODO: Import partials for better organization
+// =============================================================================
+// @import 'variables';
+// @import 'mixins';
+// @import 'functions';
+// @import 'base';
+// @import 'components';
+// @import 'layout';
+// @import 'utilities';
+// @import 'responsive';

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>King Saud University - Welcome</title>
+    <meta name="description" content="Welcome to King Saud University official website">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-brand">
+                <img src="./assets/img/ksu-logo.png" alt="King Saud University Logo" class="logo">
+                <div class="brand-text">
+                    <h1 class="main-title">King Saud University</h1>
+                    <p class="subtitle">Excellence in Education & Research</p>
+                </div>
+            </div>
+            
+            <nav class="main-navigation">
+                <ul class="nav-list">
+                    <!-- Navigation will be populated by navigation.js -->
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section">
+            <h2>Welcome to Our Website</h2>
+            <p>Students and Teachers</p>
+        </section>
+
+        <section class="gallery-section">
+            <h2>University Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img class="gallery-image" src="assets/img/ksu-logo.png" alt="KSU Campus">
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-image" src="assets/img/ksu-logo.png" alt="KSU Library">
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-image" src="assets/img/ksu-logo.png" alt="KSU Students">
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-image" src="assets/img/ksu-logo.png" alt="KSU Research">
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="schedule-section">
+            <h2>Class Schedule</h2>
+            <table class="schedule-table">
+                <caption>Daily Class Schedule</caption>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Class Start</td>
+                        <td>8:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Break</td>
+                    </tr>
+                    <tr>
+                        <td>Class Resume</td>
+                        <td>10:00 AM</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Class End</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section id="lists" class="lists-section">
+            <h2>Lists Section</h2>
+            
+            <div class="ordered-list">
+                <h3>Ordered List</h3>
+                <ol>
+                    <li>First Item</li>
+                    <li>Second Item</li>
+                    <li>Third Item</li>
+                </ol>
+            </div>
+
+            <div class="unordered-list">
+                <h3>Unordered List</h3>
+                <ul>
+                    <li>Item A</li>
+                    <li>Item B</li>
+                    <li>Item C</li>
+                </ul>
+            </div>
+
+            <div class="description-list">
+                <h3>Description List</h3>
+                <dl>
+                    <dt>Description Term</dt>
+                    <dd>Description Definition</dd>
+                </dl>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <details class="collapsible">
+                <summary>Click to Expand</summary>
+                <p>Additional information appears here when expanded.</p>
+            </details>
+        </aside>
+
+        <section id="forms" class="forms-section">
+            <h2>Interactive Forms</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="question">Ask a Question</label>
+                    <input type="text" id="question" name="question" placeholder="Type your question here">
+                </div>
+                
+                <div class="form-group">
+                    <label for="number-select">Select Number</label>
+                    <select id="number-select" name="number">
+                        <optgroup label="Low Numbers">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </optgroup>
+                        <optgroup label="High Numbers">
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="letter-input">Choose Letter</label>
+                    <input type="text" id="letter-input" name="letter" list="letter-options">
+                    <datalist id="letter-options">
+                        <option value="A">
+                        <option value="B">
+                        <option value="C">
+                        <option value="D">
+                        <option value="E">
+                        <option value="F">
+                    </datalist>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://edugate.ksu.edu.sa/ksu/init" class="external-link">Visit KSU Portal</a>
+            <a href="about.html" class="internal-link">About Layan</a>
+        </div>
+    </footer>
+    
+    <!-- JavaScript Files for Learning Tasks -->
+    <script src="js/navigation.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>

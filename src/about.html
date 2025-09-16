@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Layan - KSU Student</title>
+    <meta name="description" content="Learn more about Layan, a Management Information Systems student at King Saud University">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-brand">
+                <img src="./assets/img/ksu-logo.png" alt="King Saud University Logo" class="logo">
+                <div class="brand-text">
+                    <h1 class="main-title">About Layan</h1>
+                    <p class="subtitle">MIS Student at KSU</p>
+                </div>
+            </div>
+            
+            <nav class="main-navigation">
+                <ul class="nav-list">
+                    <!-- Navigation will be populated by navigation.js -->
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="profile-section">
+            <h2>Student Profile</h2>
+            <div class="profile-info">
+                <p><strong>Hello!</strong></p>
+                <p><em>I'm Layan</em></p>
+                <p>Major: <strong>Management Information Systems (MIS)</strong></p>
+                <p>Institution: <strong>King Saud University</strong></p>
+            </div>
+        </section>
+
+        <section class="contact-form-section">
+            <h2>Contact Form</h2>
+            <form action="https://httpbin.org/get" method="get" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="10-digit number">
+                </div>
+
+                <div class="form-group">
+                    <label for="birth-year">Year of Birth</label>
+                    <input type="number" id="birth-year" name="birthYear" min="1990" max="2007" value="2000" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="contact-info-section">
+            <h2>Contact Information</h2>
+            <ul class="contact-list">
+                <li>
+                    <span class="contact-label">Email:</span>
+                    <a href="mailto:1234@email.com" class="contact-link">1234@email.com</a>
+                </li>
+                <li>
+                    <span class="contact-label">Phone:</span>
+                    <a href="tel:123456789" class="contact-link">123-456-789</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html" class="internal-link">Home</a>
+            <a href="https://edugate.ksu.edu.sa/ksu/init" class="external-link">KSU Portal</a>
+        </div>
+    </footer>
+    
+    <!-- JavaScript Files for Learning Tasks -->
+    <script src="js/navigation.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>
