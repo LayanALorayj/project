@@ -385,7 +385,7 @@ p {
   padding: 0 2rem;
 }
 
-.welcome-section, .schedule-section, .lists-section, .forms-section, .gallery-section {
+.welcome-section, .schedule-section, .lists-section, .forms-section, .gallery-section,.weather {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   border-radius: 12px;
@@ -582,6 +582,14 @@ p {
   border-color: #3498db;
   box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
   background: rgba(255, 255, 255, 0.2);
+}
+#weather {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: inline-block;
 }
 
 /*# sourceMappingURL=main.css.map */
