@@ -13,8 +13,8 @@
  */
 class APIService {
     constructor() {
-        this.baseURL = 'https://api.example.com';
-        this.apiKey = null; // TODO: Add API key management
+        this.baseURL = 'http://api.weatherapi.com/v1/current.json?key=a5cc48dfb93a42bb97b73759251709&q=Amman&aqi=no';
+        this.apiKey = 'a5cc48dfb93a42bb97b73759251709'; // TODO: Add API key management
     }
 
     // TODO: Implement weather API integration
