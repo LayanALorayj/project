@@ -13,27 +13,29 @@
  */
 class APIService {
     constructor() {
-        this.baseURL = 'https://api.example.com';
-        this.apiKey = null; // TODO: Add API key management
+        this.baseURL = 'https://api.weatherapi.com/v1/current.json?key=a5cc48dfb93a42bb97b73759251709&q=Riyadh&aqi=n';
+        this.apiKey = 'a5cc48dfb93a42bb97b73759251709'; // TODO: Add API key management
     }
 
     // TODO: Implement weather API integration
-    async getWeatherData(city) {
+    async getWeatherData() {
         // Add weather API integration here
         // Should fetch weather data for the specified city
+        let city = 'Riyadh';
         console.log(`Fetching weather data for ${city}`);
         
         try {
+        const response = await fetch(`${this.baseURL}?key=${this.apiKey}&q=${city}&aqi=no`);
             // TODO: Implement actual API call
             // const response = await fetch(`${this.baseURL}/weather?city=${city}`);
             // return await response.json();
-            
+             const data = await response.json();
             // Placeholder response
             return {
-                city: city,
-                temperature: '25°C',
-                description: 'Sunny',
-                humidity: '60%'
+                city: data.location.name,
+               temperature: `${data.current.temp_c}°C`,
+                description: data.current.condition.text,
+               humidity: `${data.current.humidity}%`
             };
         } catch (error) {
             console.error('Weather API error:', error);

@@ -56,20 +56,27 @@
 
         <section class="gallery-section">
             <h2>University Gallery</h2>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img class="gallery-image" src="assets/img/ksu-logo.png" alt="KSU Campus">
-                </div>
-                <div class="gallery-item">
-                    <img class="gallery-image" src="assets/img/ksu-logo.png" alt="KSU Library">
-                </div>
-                <div class="gallery-item">
-                    <img class="gallery-image" src="assets/img/ksu-logo.png" alt="KSU Students">
-                </div>
-                <div class="gallery-item">
-                    <img class="gallery-image" src="assets/img/ksu-logo.png" alt="KSU Research">
-                </div>
-            </div>
+           <div id="carouselExampleFade" class="carousel slide carousel-fade">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/img/ksu-logo.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/img/ksu-logo.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/img/ksu-logo.png" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
         </section>
 
         <section id="schedule" class="schedule-section">
@@ -107,22 +114,21 @@
             <h2>Lists Section</h2>
             
             <div class="ordered-list">
-                <h3>Ordered List</h3>
-                <ol>
-                    <li>First Item</li>
-                    <li>Second Item</li>
-                    <li>Third Item</li>
-                </ol>
-            </div>
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item">A list item</li>
+            <li class="list-group-item">A list item</li>
+            <li class="list-group-item">A list item</li>
+        </ol>
 
             <div class="unordered-list">
                 <h3>Unordered List</h3>
-                <ul>
-                    <li>Item A</li>
-                    <li>Item B</li>
-                    <li>Item C</li>
+                <ul class="list-group">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
                 </ul>
-            </div>
 
             <div class="description-list">
                 <h3>Description List</h3>
@@ -141,6 +147,7 @@
         </aside>
 
         <section id="forms" class="forms-section">
+        <form action="https://httpbin.org/get" method="get" >
             <h2 class="form1">Forms</h2>
             <div class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1">@</span>
@@ -148,66 +155,20 @@
 </div>
 
 <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Ur Email" aria-label="Recipient’s username" aria-describedby="basic-addon2">
+  <input type="email" class="form-control" placeholder="Ur Email" aria-label="Recipient’s username" aria-describedby="basic-addon2">
   <span class="input-group-text" id="basic-addon2">@example.com</span>
 </div>
 
 <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Password" aria-label="Username">
+  <input type="password" class="form-control" placeholder="Password" aria-label="Username">
   <span class="input-group-text">Again</span>
-  <input type="text" class="form-control" placeholder="Validat Password" aria-label="Server">
+  <input type="password" class="form-control" placeholder="Validat Password" aria-label="Server">
 </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </div>
-
-            <!-- <div class="form-container">
-                <div class="form-group">
-                    <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+  <button type="submit" class="btn btn-secondary">Submit</button>
+  <div class="vr"></div>
+  <button type="reset" class="btn btn-outline-danger">Reset</button>
 </div>
-
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="your Email" aria-label="Recipient’s username" aria-describedby="basic-addon2">
-  <span class="input-group-text" id="basic-addon2">@example.com</span>
-</div>
-
-<div class="input-group">
-  <span class="input-group-text">With textarea</span>
-  <textarea class="form-control" aria-label="With textarea"></textarea>
-</div>
-                    <!-- <label for="question">Ask a Question</label>
-                    <input type="text" id="question" name="question" placeholder="Type your question here">
-                </div> -->
-                
-                <!-- <div class="form-group">
-                    <label for="number-select">Select Number</label>
-                    <select id="number-select" name="number">
-                        <optgroup label="Low Numbers">
-                            <option value="1">1</option>
-                            <option value="2">2</option> -->
-                        <!-- </optgroup>
-                        <optgroup label="High Numbers">
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </optgroup>
-                    </select>
-                </div> -->
-
-                <!-- <div class="form-group">
-                    <label for="letter-input">Choose Letter</label>
-                    <input type="text" id="letter-input" name="letter" list="letter-options">
-                    <datalist id="letter-options">
-                        <option value="A">
-                        <option value="B">
-                        <option value="C">
-                        <option value="D">
-                        <option value="E">
-                        <option value="F">
-                    </datalist>
-                </div>
-            </div> -->
+    </form>
         </section>
     </main>
 
