@@ -51,97 +51,18 @@
 
     <main class="main-content">
       <section class="js-demo-section">
-        <h2 id="geeks">JavaScript DOM Examples</h2>
-        
-        <div class="demo-display">
-          <h3>Counter Result</h3>
-          <div id="counter" class="result-display">0</div>
-        </div>
-
-        <div class="timer-display">
-          <h4>Timer Counter:</h4>
-          <div id="timeCounter" class="timer-value">0</div>
-        </div>
-
-        <div class="demo-inputs">
-          <input type="number" id="num1" placeholder="First number" />
-          <input type="number" id="num2" placeholder="Second number" />
-        </div>
-
-        <div class="demo-buttons">
-          <button id="incrementBtn" class="btn btn-primary">+</button>
-          <button id="decrementBtn" class="btn btn-secondary">-</button>
-          <button id="multiplyBtn" class="btn btn-success">×</button>
-        </div>
-        
-    
-      <section class="weather">
-     <h1>🌤️ Weather in Riyadh</h1>
-
-  <div id="weather"></div>
-        </section>
+         <div class="container">
+    <h1>🌤 The Weather in Your Location </h1>
+    <!-- <button id="fetch-weather">Get My Location Weather</button> -->
+    <div id="weather-display"></div>
+  </div>
+  <script src="index.js"></script>
+    <script src="js/Weather.js"></script>
     </main>
-      <script src="js/api.js"></script>
   </body>
     <!-- JavaScript Files -->
     <script src="js/navigation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
       <!-- <script src="js/api.js"></script> -->
-    <script>
-        // JavaScript Demo functionality
-        let timerCounter = 0;
-        const demo = document.getElementById("geeks");
-        const counterElem = document.getElementById("counter");
-
-        function increment() {
-            const num1 = parseInt(document.getElementById("num1").value) || 0;
-            const num2 = parseInt(document.getElementById("num2").value) || 0;
-            const result = num1 + num2;
-
-            counterElem.innerText = result;
-            counterElem.style.color = result < 0 ? "red" : "green";
-            demo.style.color = "green"; 
-        }
-
-        function decrement() {
-            const num1 = parseInt(document.getElementById("num1").value) || 0;
-            const num2 = parseInt(document.getElementById("num2").value) || 0;
-            const result = num1 - num2;
-
-            counterElem.innerText = result;
-            counterElem.style.color = result < 0 ? "red" : "green";
-            demo.style.color = "orange";
-        }
-
-        function multi() {
-            const num1 = parseInt(document.getElementById("num1").value) || 0;
-            const num2 = parseInt(document.getElementById("num2").value) || 0;
-            console.log(num1, num2);
-
-            const result = num1 * num2;
-            counterElem.innerText = result;
-            demo.style.color = result % 2 === 0 ? "green" : "red";
-        }
-
-        // Timer functionality
-        setInterval(() => {
-            timerCounter += 1;
-            document.getElementById("timeCounter").innerText = timerCounter;
-            console.log("Timer: ", timerCounter);
-        }, 10000);
-
-        // Event listeners setup
-        document.addEventListener("DOMContentLoaded", () => {
-            const incrementBtn = document.getElementById("incrementBtn");
-            const decrementBtn = document.getElementById("decrementBtn");
-            const multiplyBtn = document.getElementById("multiplyBtn");
-
-            if (incrementBtn) incrementBtn.addEventListener("click", increment);
-            if (decrementBtn) decrementBtn.addEventListener("click", decrement);
-            if (multiplyBtn) multiplyBtn.addEventListener("click", multi);
-        });
-
-        
-    </script>
-     <script src="js/api.js"></script>
+     <script src="js/Weather.js"></script>
 </html>

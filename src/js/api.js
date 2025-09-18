@@ -77,6 +77,7 @@ class APIService {
  * 4. Use async/await for clean code
  */
 
+
 // Initialize API service
 const apiService = new APIService();
 
