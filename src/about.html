@@ -45,7 +45,7 @@
                     </li>
                       <li class="nav-item">
                         <a class="nav-link" href="login.html">
-                            <i class="fas fa-info-circle me-1"></i>login
+                            <i class="fas fa-user me-1"></i>login
                         </a>
                     </li>
                 </ul>
@@ -54,27 +54,29 @@
     </nav>
 
     <main class="main-content">
-        <section class="profile-section">
+         <section class="about-section">
             <h2>Student Profile</h2>
+
             <div class="profile-info">
                 <p><strong>Hello!</strong></p>
-                <p id="profileName"><em>I'm Layan</em></p>
-                <p>Major: <strong>Management Information Systems (MIS)</strong></p>
-                <p>Institution: <strong>King Saud University</strong></p>
+                <p id="profileName">I'm Layan</p>
+                <p><strong>Major:</strong> Management Information Systems <strong>(MIS)</strong></p>
+                <p><strong>Institution:</strong> King Saud University</p>
             </div>
-        </section>
+           </section>
 
-        <section class="contact-form-section">
+        <section id="forms2" class="forms-section">
             <h2>Contact Form</h2>
             <form action="https://httpbin.org/get" method="get" class="contact-form">
+             
                 <div class="form-group">
-                    <label for="name">Full Name</label>
+                    <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
 
                 <div class="form-group">

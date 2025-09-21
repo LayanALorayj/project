@@ -194,8 +194,8 @@ form.addEventListener('submit', function(e) {
   .then(data => {
       if (usernameInput === 'emilys' && passwordInput === 'emilyspass') {
         alert('Login successful!');
-        localStorage.setItem('loggedInUser', 'Emily'); // حفظ الاسم
-        window.location.href = 'about.html'; // تحويل للصفحة
+        localStorage.setItem('loggedInUser', 'Emily');
+        window.location.href = 'about.html';
       } else {
         alert('Error: Invalid username or password');
       }
