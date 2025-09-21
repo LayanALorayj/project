@@ -172,3 +172,41 @@ if (typeof module !== 'undefined' && module.exports) {
         getAllElements
     };
 }
+// login form
+const form = document.querySelector('form');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const usernameInput = document.getElementById('exampleInputEmail1').value;
+  const passwordInput = document.getElementById('exampleInputPassword1').value;
+
+ fetch('https://dummyjson.com/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    username: 'emilys',
+    password: 'emilyspass',
+    expiresInMins: 30, // optional, defaults to 60
+  }),
+ // Include cookies (e.g., accessToken) in the request
+})
+.then(res => res.json())
+.then(data => {
+    // التحقق داخل الـ .then
+    if (usernameInput === 'emilys' && passwordInput === 'emilyspass') {
+      alert('Login successful!');
+      console.log('User logged in:', data);
+    } else {
+      alert('Error: Invalid username or password');
+      console.log('Login failed');
+    }
+  })
+    })
+  .catch(err => {
+    console.error('Error:', err);
+    alert('Error: Unable to login');
+  });
+
+
+

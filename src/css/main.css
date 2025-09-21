@@ -378,6 +378,13 @@ p {
 .form-group input::placeholder, .form-group select::placeholder {
   color: rgba(44, 62, 80, 0.6);
 }
+#forms {
+  margin-top: 1.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  
+
+}
 
 .main-content {
   max-width: 1200px;
@@ -590,6 +597,9 @@ p {
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   display: inline-block;
+}
+.login {
+  margin-top: 2rem;
 }
 
 /*# sourceMappingURL=main.css.map */
