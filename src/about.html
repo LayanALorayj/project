@@ -14,7 +14,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="assets/img/ksu-logo.png" alt="KSU Logo" width="40" height="40" class="me-2">
-                <span class="fw-bold">About Layan</span>
+                <span class="fw-bold" id="headerName">About Layan</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@
             <h2>Student Profile</h2>
             <div class="profile-info">
                 <p><strong>Hello!</strong></p>
-                <p><em>I'm Layan</em></p>
+                <p id="profileName"><em>I'm Layan</em></p>
                 <p>Major: <strong>Management Information Systems (MIS)</strong></p>
                 <p>Institution: <strong>King Saud University</strong></p>
             </div>
@@ -117,6 +117,22 @@
     </footer>
     
     <!-- JavaScript Files for Learning Tasks -->
+     <script>
+  window.addEventListener('DOMContentLoaded', () => {
+      const userName = localStorage.getItem('loggedInUser');
+      if(userName) {
+          document.getElementById('profileName').textContent = `I'm ${userName}`;
+      }
+  });
+</script>
+     <script>
+  window.addEventListener('DOMContentLoaded', () => {
+      const userName = localStorage.getItem('loggedInUser');
+      if(userName) {
+          document.getElementById('headerName').textContent = `About ${userName}`;
+      }
+  });
+</script>
     <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
     <script src="js/validation.js"></script>

@@ -181,32 +181,30 @@ form.addEventListener('submit', function(e) {
   const usernameInput = document.getElementById('exampleInputEmail1').value;
   const passwordInput = document.getElementById('exampleInputPassword1').value;
 
- fetch('https://dummyjson.com/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    username: 'emilys',
-    password: 'emilyspass',
-    expiresInMins: 30, // optional, defaults to 60
-  }),
- // Include cookies (e.g., accessToken) in the request
-})
-.then(res => res.json())
-.then(data => {
-    // التحقق داخل الـ .then
-    if (usernameInput === 'emilys' && passwordInput === 'emilyspass') {
-      alert('Login successful!');
-      console.log('User logged in:', data);
-    } else {
-      alert('Error: Invalid username or password');
-      console.log('Login failed');
-    }
+  fetch('https://dummyjson.com/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      username: 'emilys',
+      password: 'emilyspass',
+      expiresInMins: 30,
+    }),
   })
-    })
+  .then(res => res.json())
+  .then(data => {
+      if (usernameInput === 'emilys' && passwordInput === 'emilyspass') {
+        alert('Login successful!');
+        localStorage.setItem('loggedInUser', 'Emily'); // حفظ الاسم
+        window.location.href = 'about.html'; // تحويل للصفحة
+      } else {
+        alert('Error: Invalid username or password');
+      }
+  })
   .catch(err => {
     console.error('Error:', err);
     alert('Error: Unable to login');
   });
+});
 
 
 
