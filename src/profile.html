@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KSU Calculator - Learning Project</title>
-    <meta name="description" content="Interactive calculator for learning JavaScript DOM manipulation">
+    <title>King Saud University - Welcome</title>
+    <meta name="description" content="Welcome to King Saud University official website">
     <link rel="stylesheet" href="css/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  </head>
-
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+</head>
+<body>
+       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="assets/img/ksu-logo.png" alt="KSU Logo" width="40" height="40" class="me-2">
-                <span class="fw-bold">KSU Calculator</span>
+                <span class="fw-bold">King Saud University</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +29,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="calculator.html">
+                        <a class="nav-link" href="calculator.html">
                             <i class="fas fa-calculator me-1"></i>Calculator
                         </a>
                     </li>
@@ -45,51 +44,64 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a id="loginLink" class="nav-link" href="login.html">
-                           <i class="fas fa-user me-1"></i>login
+                       <a id="loginLink" class="nav-link active" href="login.html">
+                            <i class="fas fa-user me-1"></i>login
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <main class="main-content">
-      <section class="calculator-section">
-        <h2 id="geeks">Interactive Calculator</h2>
+     <main class="main-content">
+        <section class="profile-section">
+            <div class="text-center">
+                <img src="" class="rounded" id="Img" >
+            </div>
+            <p class="profile-info" id="FirstName">login to see</p>
+            <p id="LastName">login to see</p>
+            <p id="Email">login to see</p>
+            <div style="text-align: center; margin-top: 50px;">
+  <button id="logoutBtn" class="btn btn-danger">
+    <i class="fas fa-sign-out-alt me-1"></i> Logout
+  </button>
+</div>
+        </section>
         
-        <div class="calculator-display">
-          <h3>Result</h3>
-          <div id="counter" class="result-display">0</div>
-        </div>
-
-        <div class="timer-display">
-          <h4>Timer Counter:</h4>
-          <div id="timeCounter" class="timer-value">0</div>
-        </div>
-
-        <div class="calculator-inputs">
-          <input type="number" id="num1" placeholder="First number" />
-          <input type="number" id="num2" placeholder="Second number" />
-        </div>
-
-        <div class="calculator-buttons">
-          <button id="incrementBtn" class="btn btn-primary">+</button>
-          <button id="decrementBtn" class="btn btn-secondary">-</button>
-          <button id="multiplyBtn" class="btn btn-success">×</button>
-          <button id="divideBtn" class="btn btn-warning">÷</button>
-        </div>
-      </section>
-    </main>
-    
-    <footer class="footer">
+     </main>
+     <footer class="footer">
         <div class="footer-links">
-            <a href="index.html" class="internal-link">Home</a>
-            <a href="https://edugate.ksu.edu.sa/ksu/init" class="external-link">KSU Portal</a>
+            <a href="https://edugate.ksu.edu.sa/ksu/init" class="external-link">Visit KSU Portal</a>
+            <a href="about.html" class="internal-link">About</a>
         </div>
     </footer>
-     <script>
+ <script>
+  window.addEventListener('DOMContentLoaded', () => {
+  const userData = JSON.parse(localStorage.getItem('loggedInUser'));
+
+  if (userData) {
+    document.getElementById('FirstName').textContent = `First Name: ${userData.firstName}`;
+    document.getElementById('LastName').textContent = `Last Name: ${userData.lastName}`;
+    document.getElementById('Email').textContent = `Email: ${userData.email}`;
+  } else {
+    window.location.href = "login.html"; 
+  }
+});
+ </script>
+ <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("loggedInUser"); 
+        alert("You have been logged out!");
+        window.location.href = "login.html"; 
+      });
+    }
+  });
+ </script>
+  <script>
+      document.addEventListener("DOMContentLoaded", () => {
     const loginLink = document.getElementById("loginLink");
     const loggedInUser = localStorage.getItem("loggedInUser");
 
@@ -98,10 +110,12 @@
       loginLink.href = "profile.html";
     }
   });
+ </script>
 </script>
-  </body>
   <script src="js/navigation.js"></script>
-  <script type="module" src="js/calculator.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/api.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
+</body>
 </html>

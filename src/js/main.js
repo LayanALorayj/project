@@ -192,19 +192,32 @@ form.addEventListener('submit', function(e) {
   })
   .then(res => res.json())
   .then(data => {
-      if (usernameInput === 'emilys' && passwordInput === 'emilyspass') {
-        alert('Login successful!');
-        localStorage.setItem('loggedInUser', 'Emily');
-        window.location.href = 'about.html';
-      } else {
-        alert('Error: Invalid username or password');
-      }
+     if(usernameInput === 'emilys' && passwordInput === 'emilyspass'){ 
+    console.log('login successful', data);
+      localStorage.setItem('loggedInUser', JSON.stringify({
+  firstName: data.firstName,
+  lastName: data.lastName,
+  email: data.email,
+  image: data.image,
+  token: data.token
+}));
+        window.location.href = 'profile.html';
+ } else {
+      alert('Invalid username or password!');
+    }
   })
   .catch(err => {
     console.error('Error:', err);
     alert('Error: Unable to login');
   });
 });
-
+fetch('https://dummyjson.com/auth/me', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('loggedInUser')).token
+  }, 
+})
+.then(res => res.json())
+.then(console.log);
 
 

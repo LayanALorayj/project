@@ -44,7 +44,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="login.html">
+                       <a id="loginLink" class="nav-link" href="login.html">
                             <i class="fas fa-user me-1"></i>login
                         </a>
                     </li>
@@ -121,17 +121,17 @@
     <!-- JavaScript Files for Learning Tasks -->
      <script>
   window.addEventListener('DOMContentLoaded', () => {
-      const userName = localStorage.getItem('loggedInUser');
-      if(userName) {
-          document.getElementById('profileName').textContent = `I'm ${userName}`;
+      const userData = JSON.parse(localStorage.getItem('loggedInUser'));
+      if(userData) {
+          document.getElementById('profileName').textContent = `I'm ${userData.firstName}`;
       }
   });
 </script>
      <script>
   window.addEventListener('DOMContentLoaded', () => {
-      const userName = localStorage.getItem('loggedInUser');
-      if(userName) {
-          document.getElementById('headerName').textContent = `About ${userName}`;
+      const userData = JSON.parse(localStorage.getItem('loggedInUser'));
+      if(userData) {
+          document.getElementById('headerName').textContent = `About ${userData.firstName}`;
       }
   });
 </script>
@@ -139,6 +139,17 @@
     <script src="js/main.js"></script>
     <script src="js/validation.js"></script>
     <script src="js/api.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginLink = document.getElementById("loginLink");
+    const loggedInUser = localStorage.getItem("loggedInUser");
+
+    if (loggedInUser) {
+      loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
+      loginLink.href = "profile.html";
+    }
+  });
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

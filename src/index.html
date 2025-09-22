@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">
+                        <a id="loginLink" class="nav-link" href="login.html">
                             <i class="fas fa-user me-1"></i>login
                         </a>
                     </li>
@@ -191,6 +191,17 @@
             <a href="about.html" class="internal-link">About</a>
         </div>
     </footer>
+     <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginLink = document.getElementById("loginLink");
+    const loggedInUser = localStorage.getItem("loggedInUser");
+
+    if (loggedInUser) {
+      loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
+      loginLink.href = "profile.html";
+    }
+  });
+</script>
 
     <!-- JavaScript Files -->
     <script src="js/navigation.js"></script>
