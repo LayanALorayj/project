@@ -134,32 +134,17 @@
             <a href="about.html" class="internal-link">About</a>
         </div>
     </footer>
-    <script>
+     <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginLink = document.getElementById("loginLink");
+    const loggedInUser = localStorage.getItem("loggedInUser");
 
-function getCookie(name) {
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  name = name + "=";
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i].trim();
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
+    if (loggedInUser) {
+      loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
+      loginLink.href = "profile.html";
     }
-  }
-  return "";
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const loginLink = document.getElementById("loginLink");
-  const loggedInUser = getCookie("loggedInUser");
-
-  if (loggedInUser) {
-    loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
-    loginLink.href = "profile.html";
-  }
-});
+  });
 </script>
-
     <!-- JavaScript Files -->
     <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>

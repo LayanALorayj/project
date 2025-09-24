@@ -75,80 +75,39 @@
         </div>
     </footer>
 <script>
+  document.addEventListener('DOMContentLoaded', () => {
 
-function getCookie(name) {
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  name = name + "=";
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i].trim();
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
+    if (typeof loadUserProfile === 'function') {
+      loadUserProfile(); 
+    } else {
+      console.error('loadUserProfile is not defined');
     }
-  }
-  return "";
-}
- 
-function deleteCookie(name) {
-  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-}
-     
-window.addEventListener('DOMContentLoaded', () => {
-  const userDataCookie = getCookie('loggedInUser');
-
-  if (userDataCookie) {
-    const userData = JSON.parse(userDataCookie);
-
-    document.getElementById('FirstName').textContent = `First Name: ${userData.firstName}`;
-    document.getElementById('LastName').textContent = `Last Name: ${userData.lastName}`;
-    document.getElementById('Email').textContent = `Email: ${userData.email}`;
-    document.getElementById('Img').src = userData.image;
-
-  } else {       
-    window.location.href = "login.html"; 
-  }
-});
-   
-document.addEventListener("DOMContentLoaded", () => {
-  const logoutBtn = document.getElementById("logoutBtn");
-
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-      deleteCookie("loggedInUser"); 
-      alert("You have been logged out!");
-      window.location.href = "login.html"; 
-    });
-  }
-});
-    
-document.addEventListener("DOMContentLoaded", () => {
-  
-
-  //todo integrate it with local storage
-
-  fetch('https://dummyjson.com/auth/me', {
-    method: 'GET', /* or POST/PUT/PATCH/DELETE */
-    headers: {
-      'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('loggedInUser')).token,
-      'Content-Type': 'application/json'
-    }, 
-  })
-  .then(res => res.json())
-  .then(()=>{
-    //todo Show data in the profile page
   });
-  
-
-  const loginLink = document.getElementById("loginLink");
-  const loggedInUser = getCookie("loggedInUser");
-
-  if (loggedInUser) {
-    loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
-    loginLink.href = "profile.html";
-  }
-});
 </script>
-</script>
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("loggedInUser"); 
+        alert("You have been logged out!");
+        window.location.href = "login.html"; 
+      });
+    }
+  });
+ </script>
+  <script>
+      document.addEventListener("DOMContentLoaded", () => {
+    const loginLink = document.getElementById("loginLink");
+    const loggedInUser = localStorage.getItem("loggedInUser");
+
+    if (loggedInUser) {
+      loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
+      loginLink.href = "profile.html";
+    }
+  });
+ </script>
   <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
     <script src="js/validation.js"></script>

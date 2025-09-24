@@ -172,28 +172,11 @@ if (typeof module !== 'undefined' && module.exports) {
         getAllElements
     };
 }
-function setCookie(name, value, days) {
-  const d = new Date();
-  d.setTime(d.getTime() + (days*24*60*60*1000));   
-  let expires = "expires="+ d.toUTCString();
-  document.cookie = name + "=" + value + ";" + expires + ";path=/";
-  }
-  function getCookie(name) {
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  name = name + "=";
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i].trim();
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
+
 // login form
 const form = document.querySelector('form');
 
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', function (e) {
   e.preventDefault();
 
   const usernameInput = document.getElementById('exampleInputEmail1').value;
@@ -203,51 +186,67 @@ form.addEventListener('submit', function(e) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      username: 'emilys', //tod make it dynamic
-      password: 'emilyspass', //tod make it dynamic
+      username: usernameInput,
+      password: passwordInput,
       expiresInMins: 30,
     }),
   })
-  .then(res => res.json())
-  .then(data => {
+   .then(res => res.json())
+      .then(data => {
+         if (data.message) {
+          alert('Login failed: ' + data.message);
+            return;
+  }
 
-    console.log('data', data)
-    debugger;
-    if(usernameInput === 'emilys' && passwordInput === 'emilyspass'){   //remove it 
-      console.log('login successful', data);
-     
-      //switch to local storage
-      setCookie('loggedInUser', JSON.stringify({
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        image: data.image,
-        token: data.token
-      }), 365);
+  if (!data.accessToken) {
+    alert('Login failed: Invalid response from server.');
+    return;
+  }
 
-      window.location.href = 'profile.html';
-    } else {
-      alert('Invalid username or password!');
-    }
-  })
-  .catch(err => {
-    console.error('Error:', err);
-    alert('Error: Unable to login');
+       localStorage.setItem('loggedInUser', JSON.stringify({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          image: data.image,
+          token: data.accessToken,
+        }));
+
+        alert('Login successful!');
+        window.location.href = 'profile.html';
+      })
+      .catch(err => {
+        console.error('Login error:', err);
+        alert('Error: Unable to login');
+      });
   });
-});
 
-const userCookie = getCookie('loggedInUser');
-if(userCookie) {
-  const userData = JSON.parse(userCookie);
-  console.log('Current user from cookie:', userData);
+function loadUserProfile() {
+  const stored = localStorage.getItem('loggedInUser');
+  if (!stored) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  const userData = JSON.parse(stored);
 
   fetch('https://dummyjson.com/auth/me', {
     method: 'GET',
     headers: {
-      'Authorization': 'Bearer ' + userData.token
-    }, 
+      Authorization: 'Bearer ' + userData.token,
+      'Content-Type': 'application/json'
+    }
   })
-  .then(res => res.json())
-  .then(console.log);
+    .then(res => res.json())
+    .then(data => {
+    
+      getElement('#FirstName').textContent = `First Name: ${data.firstName}`;
+      getElement('#LastName').textContent = `Last Name: ${data.lastName}`;
+      getElement('#Email').textContent = `Email: ${data.email}`;
+      getElement('#Img').src = data.image;
+    })
+    .catch(err => {
+      console.error('Error fetching user:', err);
+      window.location.href = 'login.html';
+    });
 }
 
