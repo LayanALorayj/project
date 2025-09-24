@@ -203,16 +203,20 @@ form.addEventListener('submit', function(e) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      username: 'emilys',
-      password: 'emilyspass',
+      username: 'emilys', //tod make it dynamic
+      password: 'emilyspass', //tod make it dynamic
       expiresInMins: 30,
     }),
   })
   .then(res => res.json())
   .then(data => {
-    if(usernameInput === 'emilys' && passwordInput === 'emilyspass'){ 
+
+    console.log('data', data)
+    debugger;
+    if(usernameInput === 'emilys' && passwordInput === 'emilyspass'){   //remove it 
       console.log('login successful', data);
      
+      //switch to local storage
       setCookie('loggedInUser', JSON.stringify({
         firstName: data.firstName,
         lastName: data.lastName,
