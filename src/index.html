@@ -126,63 +126,6 @@
                 </tfoot>
             </table>
         </section>
-
-        <!-- <section id="lists" class="lists-section">
-            <h2>Lists Section</h2>
-            <div class="ordered-list">
-                <ol class="list-group list-group-numbered">
-                    <li class="list-group-item">A list item</li>
-                    <li class="list-group-item">A list item</li>
-                    <li class="list-group-item">A list item</li>
-                </ol>
-            </div>
-            <div class="unordered-list">
-                <h3>Unordered List</h3>
-                <ul class="list-group">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
-                    <li class="list-group-item">And a fifth one</li>
-                </ul>
-            </div>
-            <div class="description-list">
-                <h3>Description List</h3>
-                <dl>
-                    <dt>Description Term</dt>
-                    <dd>Description Definition</dd>
-                </dl>
-            </div>
-        </section>
-
-        <aside class="sidebar">
-            <details class="collapsible">
-                <summary>Click to Expand</summary>
-                <p>Additional information appears here when expanded.</p>
-            </details>
-        </aside>
-
-        <section id="forms" class="forms-section">
-            <form action="https://httpbin.org/get" method="get">
-                <h2 class="form1">Forms</h2>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Your Email" aria-label="Recipient’s username" aria-describedby="basic-addon2">
-                    <span class="input-group-text" id="basic-addon2">@example.com</span>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password" aria-label="Username">
-                    <span class="input-group-text">Again</span>
-                    <input type="password" class="form-control" placeholder="Validate Password" aria-label="Server">
-                </div>
-                <button type="submit" class="btn btn-secondary">Submit</button>
-                <div class="vr"></div>
-                <button type="reset" class="btn btn-outline-danger">Reset</button>
-            </form>
-        </section> -->
     </main>
 
     <footer class="footer">
@@ -191,16 +134,30 @@
             <a href="about.html" class="internal-link">About</a>
         </div>
     </footer>
-     <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const loginLink = document.getElementById("loginLink");
-    const loggedInUser = localStorage.getItem("loggedInUser");
+    <script>
 
-    if (loggedInUser) {
-      loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
-      loginLink.href = "profile.html";
+function getCookie(name) {
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  name = name + "=";
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
     }
-  });
+  }
+  return "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("loginLink");
+  const loggedInUser = getCookie("loggedInUser");
+
+  if (loggedInUser) {
+    loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
+    loginLink.href = "profile.html";
+  }
+});
 </script>
 
     <!-- JavaScript Files -->

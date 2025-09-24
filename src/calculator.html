@@ -88,17 +88,31 @@
             <a href="https://edugate.ksu.edu.sa/ksu/init" class="external-link">KSU Portal</a>
         </div>
     </footer>
-     <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const loginLink = document.getElementById("loginLink");
-    const loggedInUser = localStorage.getItem("loggedInUser");
-
-    if (loggedInUser) {
-      loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
-      loginLink.href = "profile.html";
+  <script>
+function getCookie(name) {
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  name = name + "=";
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
     }
-  });
+  }
+  return "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("loginLink");
+  const loggedInUser = getCookie("loggedInUser");
+
+  if (loggedInUser) {
+    loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
+    loginLink.href = "profile.html";
+  }
+});
 </script>
+
   </body>
   <script src="js/navigation.js"></script>
   <script type="module" src="js/calculator.js"></script>

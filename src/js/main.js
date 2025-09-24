@@ -172,6 +172,24 @@ if (typeof module !== 'undefined' && module.exports) {
         getAllElements
     };
 }
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days*24*60*60*1000));   
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  }
+  function getCookie(name) {
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  name = name + "=";
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 // login form
 const form = document.querySelector('form');
 
@@ -192,17 +210,19 @@ form.addEventListener('submit', function(e) {
   })
   .then(res => res.json())
   .then(data => {
-     if(usernameInput === 'emilys' && passwordInput === 'emilyspass'){ 
-    console.log('login successful', data);
-      localStorage.setItem('loggedInUser', JSON.stringify({
-  firstName: data.firstName,
-  lastName: data.lastName,
-  email: data.email,
-  image: data.image,
-  token: data.token
-}));
-        window.location.href = 'profile.html';
- } else {
+    if(usernameInput === 'emilys' && passwordInput === 'emilyspass'){ 
+      console.log('login successful', data);
+     
+      setCookie('loggedInUser', JSON.stringify({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        image: data.image,
+        token: data.token
+      }), 365);
+
+      window.location.href = 'profile.html';
+    } else {
       alert('Invalid username or password!');
     }
   })
@@ -211,13 +231,19 @@ form.addEventListener('submit', function(e) {
     alert('Error: Unable to login');
   });
 });
-fetch('https://dummyjson.com/auth/me', {
-  method: 'GET',
-  headers: {
-    'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('loggedInUser')).token
-  }, 
-})
-.then(res => res.json())
-.then(console.log);
 
+const userCookie = getCookie('loggedInUser');
+if(userCookie) {
+  const userData = JSON.parse(userCookie);
+  console.log('Current user from cookie:', userData);
+
+  fetch('https://dummyjson.com/auth/me', {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + userData.token
+    }, 
+  })
+  .then(res => res.json())
+  .then(console.log);
+}
 

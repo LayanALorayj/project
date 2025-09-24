@@ -80,16 +80,30 @@
     <script src="js/api.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09Jc Yin3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="js/weather.js"></script>
-     <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const loginLink = document.getElementById("loginLink");
-    const loggedInUser = localStorage.getItem("loggedInUser");
+<script>
 
-    if (loggedInUser) {
-      loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
-      loginLink.href = "profile.html";
+function getCookie(name) {
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  name = name + "=";
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
     }
-  });
+  }
+  return "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("loginLink");
+  const loggedInUser = getCookie("loggedInUser");
+
+  if (loggedInUser) {
+    loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
+    loginLink.href = "profile.html";
+  }
+});
 </script>
 </body>
 </html>

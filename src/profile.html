@@ -74,43 +74,63 @@
             <a href="about.html" class="internal-link">About</a>
         </div>
     </footer>
- <script>
-  window.addEventListener('DOMContentLoaded', () => {
-  const userData = JSON.parse(localStorage.getItem('loggedInUser'));
+<script>
 
-  if (userData) {
+function getCookie(name) {
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  name = name + "=";
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+ 
+function deleteCookie(name) {
+  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+     
+window.addEventListener('DOMContentLoaded', () => {
+  const userDataCookie = getCookie('loggedInUser');
+
+  if (userDataCookie) {
+    const userData = JSON.parse(userDataCookie);
+
     document.getElementById('FirstName').textContent = `First Name: ${userData.firstName}`;
     document.getElementById('LastName').textContent = `Last Name: ${userData.lastName}`;
     document.getElementById('Email').textContent = `Email: ${userData.email}`;
-  } else {
+    document.getElementById('Img').src = userData.image;
+
+  } else {       
     window.location.href = "login.html"; 
   }
 });
- </script>
- <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const logoutBtn = document.getElementById("logoutBtn");
+   
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.getElementById("logoutBtn");
 
-    if (logoutBtn) {
-      logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem("loggedInUser"); 
-        alert("You have been logged out!");
-        window.location.href = "login.html"; 
-      });
-    }
-  });
- </script>
-  <script>
-      document.addEventListener("DOMContentLoaded", () => {
-    const loginLink = document.getElementById("loginLink");
-    const loggedInUser = localStorage.getItem("loggedInUser");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      deleteCookie("loggedInUser"); 
+      alert("You have been logged out!");
+      window.location.href = "login.html"; 
+    });
+  }
+});
+    
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("loginLink");
+  const loggedInUser = getCookie("loggedInUser");
 
-    if (loggedInUser) {
-      loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
-      loginLink.href = "profile.html";
-    }
-  });
- </script>
+  if (loggedInUser) {
+    loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
+    loginLink.href = "profile.html";
+  }
+});
+</script>
 </script>
   <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>

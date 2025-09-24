@@ -14,7 +14,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="assets/img/ksu-logo.png" alt="KSU Logo" width="40" height="40" class="me-2">
-                <span class="fw-bold" id="headerName">About Layan</span>
+                <span class="fw-bold" id="headerName">About student</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +59,7 @@
 
             <div class="profile-info">
                 <p><strong>Hello!</strong></p>
-                <p id="profileName">I'm Layan</p>
+                <p id="profileName">I'm student</p>
                 <p><strong>Major:</strong> Management Information Systems <strong>(MIS)</strong></p>
                 <p><strong>Institution:</strong> King Saud University</p>
             </div>
@@ -119,37 +119,67 @@
     </footer>
     
     <!-- JavaScript Files for Learning Tasks -->
-     <script>
-  window.addEventListener('DOMContentLoaded', () => {
-      const userData = JSON.parse(localStorage.getItem('loggedInUser'));
-      if(userData) {
-          document.getElementById('profileName').textContent = `I'm ${userData.firstName}`;
-      }
-  });
+   <script>
+function getCookie(name) {
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  name = name + "=";
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const userDataCookie = getCookie("loggedInUser");
+
+  if (userDataCookie) {
+    const userData = JSON.parse(userDataCookie);
+     
+    document.getElementById("headerName").textContent = `About ${userData.firstName}`;
+    document.getElementById("profileName").textContent = `I'm ${userData.firstName}`;
+  }
+
+  const loginLink = document.getElementById("loginLink");
+  if (userDataCookie) {
+    loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
+    loginLink.href = "profile.html";
+  }
+});
 </script>
-     <script>
-  window.addEventListener('DOMContentLoaded', () => {
-      const userData = JSON.parse(localStorage.getItem('loggedInUser'));
-      if(userData) {
-          document.getElementById('headerName').textContent = `About ${userData.firstName}`;
-      }
-  });
-</script>
+
     <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
     <script src="js/validation.js"></script>
     <script src="js/api.js"></script>
-    <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const loginLink = document.getElementById("loginLink");
-    const loggedInUser = localStorage.getItem("loggedInUser");
-
-    if (loggedInUser) {
-      loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
-      loginLink.href = "profile.html";
+  <script>
+function getCookie(name) {
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  name = name + "=";
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
     }
-  });
+  }
+  return "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("loginLink");
+  const loggedInUser = getCookie("loggedInUser");
+
+  if (loggedInUser) {
+    loginLink.innerHTML = `<i class="fas fa-user me-1"></i> Profile`;
+    loginLink.href = "profile.html";
+  }
+});
 </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
