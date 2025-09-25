@@ -172,10 +172,11 @@ if (typeof module !== 'undefined' && module.exports) {
         getAllElements
     };
 }
+
 // login form
 const form = document.querySelector('form');
 
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', function (e) {
   e.preventDefault();
 
   const usernameInput = document.getElementById('exampleInputEmail1').value;
@@ -185,39 +186,67 @@ form.addEventListener('submit', function(e) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      username: 'emilys',
-      password: 'emilyspass',
+      username: usernameInput,
+      password: passwordInput,
       expiresInMins: 30,
     }),
   })
-  .then(res => res.json())
-  .then(data => {
-     if(usernameInput === 'emilys' && passwordInput === 'emilyspass'){ 
-    console.log('login successful', data);
-      localStorage.setItem('loggedInUser', JSON.stringify({
-  firstName: data.firstName,
-  lastName: data.lastName,
-  email: data.email,
-  image: data.image,
-  token: data.token
-}));
+   .then(res => res.json())
+      .then(data => {
+         if (data.message) {
+          alert('Login failed: ' + data.message);
+            return;
+  }
+
+  if (!data.accessToken) {
+    alert('Login failed: Invalid response from server.');
+    return;
+  }
+
+       localStorage.setItem('loggedInUser', JSON.stringify({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          image: data.image,
+          token: data.accessToken,
+        }));
+
+        alert('Login successful!');
         window.location.href = 'profile.html';
- } else {
-      alert('Invalid username or password!');
+      })
+      .catch(err => {
+        console.error('Login error:', err);
+        alert('Error: Unable to login');
+      });
+  });
+
+function loadUserProfile() {
+  const stored = localStorage.getItem('loggedInUser');
+  if (!stored) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  const userData = JSON.parse(stored);
+
+  fetch('https://dummyjson.com/auth/me', {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + userData.token,
+      'Content-Type': 'application/json'
     }
   })
-  .catch(err => {
-    console.error('Error:', err);
-    alert('Error: Unable to login');
-  });
-});
-fetch('https://dummyjson.com/auth/me', {
-  method: 'GET',
-  headers: {
-    'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('loggedInUser')).token
-  }, 
-})
-.then(res => res.json())
-.then(console.log);
-
+    .then(res => res.json())
+    .then(data => {
+    
+      getElement('#FirstName').textContent = `First Name: ${data.firstName}`;
+      getElement('#LastName').textContent = `Last Name: ${data.lastName}`;
+      getElement('#Email').textContent = `Email: ${data.email}`;
+      getElement('#Img').src = data.image;
+    })
+    .catch(err => {
+      console.error('Error fetching user:', err);
+      window.location.href = 'login.html';
+    });
+}
 
